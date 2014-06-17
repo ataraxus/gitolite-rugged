@@ -33,7 +33,7 @@ module Gitolite
         begin
           repo = Rugged::Repository.new(dir)
           return false if repo.empty?
-        rescue Rugged::RepositoryError
+        rescue Rugged::RepositoryError, Rugged::OSError
           return false
         end
 
