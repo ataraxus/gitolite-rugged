@@ -279,7 +279,7 @@ module Gitolite
     # E.g., +git@localhost:2222/gitolite-admin.git+
     #
     def clone()
-      Rugged::Repository.clone_at(admin_url(@settings), File.expand_path(@path), credentials: @credentials)
+      Rugged::Repository.clone_at(GitoliteAdmin.admin_url(@settings), File.expand_path(@path), credentials: @credentials)
     end
 
 
