@@ -46,7 +46,7 @@ module Gitolite
       end
 
       def admin_url(settings)
-        [settings[:git_user], '@', settings[:host], '/gitolite-admin.git'].join
+        ['ssh://', settings[:git_user], '@', settings[:host], '/gitolite-admin.git'].join
       end
     end
 
@@ -278,7 +278,7 @@ module Gitolite
     # The hostname may use an optional :port to allow for custom SSH ports.
     # E.g., +git@localhost:2222/gitolite-admin.git+
     #
-    def clone()
+    def clone
       Rugged::Repository.clone_at(GitoliteAdmin.admin_url(@settings), File.expand_path(@path), credentials: @credentials)
     end
 
