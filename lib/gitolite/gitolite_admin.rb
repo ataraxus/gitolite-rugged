@@ -79,9 +79,9 @@ module Gitolite
 
       # setup credentials
       @credentials = Rugged::Credentials::SshKey.new(
-        username: settings[:git_user], publickey: settings[:public_key], 
+        username: settings[:git_user], publickey: settings[:public_key],
         privatekey: settings[:private_key] )
-      
+
       @repo =
       if self.class.is_gitolite_admin_repo?(path)
         Rugged::Repository.new(path, credentials: @credentials)
@@ -201,7 +201,7 @@ module Gitolite
       commit_tree = index.write_tree @repo
       index.write
 
-      commit_author = { email: 'wee@example.org', name: 'gitolite-rugged gem', time: Time.now }
+      commit_author = @commit_author.merge(time: Time.now)
 
       Rugged::Commit.create(@repo,
         author: commit_author,
