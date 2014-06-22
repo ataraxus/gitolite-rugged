@@ -93,7 +93,7 @@ module Gitolite
       @config_file_path = File.join(@config_dir_path, @settings[:config_file])
       @key_dir_path     = File.join(@path, relative_key_dir)
 
-      @commit_author = { email: settings[:author_email], name: settings[:author_name] }
+      @commit_author = { email: @settings[:author_email], name: @settings[:author_name] }
 
       reload!
     end
