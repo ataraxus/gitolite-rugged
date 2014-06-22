@@ -79,8 +79,10 @@ module Gitolite
 
       # setup credentials
       @credentials = Rugged::Credentials::SshKey.new(
-        username: settings[:git_user], publickey: settings[:public_key],
-        privatekey: settings[:private_key] )
+        username: @settings[:git_user],
+        publickey: settings[:public_key],
+        privatekey: settings[:private_key]
+      )
 
       @repo =
       if self.class.is_gitolite_admin_repo?(path)
